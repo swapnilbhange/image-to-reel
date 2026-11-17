@@ -4,6 +4,15 @@ A Claude skill that turns **any still image** (devotional artwork, illustration,
 
 Wind in cloth, rippling water, rotating halos, glowing eyes and lamps, falling petals, snow, embers, light rays, a slow camera push-in: all made from the single image you upload.
 
+<p align="center">
+  <a href="samples/shiva_reel_sample.mp4">
+    <img src="samples/shiva_reel_preview.gif" alt="Sample Reel made from a single still image" width="300">
+  </a>
+  <br>
+  <sub>One still painting, animated into a 14 s Reel. Click for the full video with sound
+  (<a href="samples/shiva_reel_sample.mp4"><code>samples/shiva_reel_sample.mp4</code></a>).</sub>
+</p>
+
 > **No video model is used.** Every frame is composited from layers in Python/OpenCV and encoded with ffmpeg. The only ML step is Segment Anything (via `rembg`), used to cut out objects when needed. Output is deterministic, offline-capable and cheap to re-render.
 
 ---
@@ -104,7 +113,8 @@ image-to-reel/
 │   ├── scene_template.json   # skeleton for new scenes
 │   └── example/              # worked example: src.png, shiva_scene.json, shiva_masks/
 └── samples/
-    ├── shiva_reel_sample.mp4 # the rendered result of the worked example
+    ├── shiva_reel_sample.mp4 # the rendered result of the worked example (with sound)
+    ├── shiva_reel_preview.gif # silent 7 s preview shown at the top of this README
     └── shiva_frames.png      # QC contact sheet: 5 frames across the 14 s
 ```
 
@@ -286,6 +296,8 @@ Two `particles` layers: a small, slow far layer behind the subject and a larger 
 `assets/example/` contains a Shiva artwork with 22 effects that runs as is. Its rendered result is checked in at [`samples/shiva_reel_sample.mp4`](samples/shiva_reel_sample.mp4) (1080x1920, 30 fps, 14 s, 6.5 MB, compressed for the repo).
 
 ![Five frames from the sample Reel](samples/shiva_frames.png)
+
+[Watch the full sample with sound](samples/shiva_reel_sample.mp4)
 
 What moves in the sample: drifting sunset clouds, two rotating mandala rings (rebuilt with `polar_fill`), the orb held in front of them, swaying cloth and hair, a flowing waterfall and lake ripples, glows on the flames, eyes and ornaments, light rays, falling lotus, marigold and jasmine petals with a few embers, a slow camera push-in and bloom. The golden frame stays locked.
 
