@@ -1,0 +1,29 @@
+{
+  "_help": "Copy to <project>/scene.json next to src.png. Positions are SOURCE pixels. Delete what you don't need. See docs/FLOW.md and docs/EFFECTS.md",
+  "image": "src.png",
+  "out_size": [1080, 1920],
+  "fps": 30,
+  "duration": 14,
+  "output": "out/reel.mp4",
+
+  "objects": [
+    {"name": "subject", "method": "sam", "z": 1,
+     "strips": [{"y0": 0, "y1": 700, "pos": [[500, 400]], "neg": [[100, 100]]}],
+     "close": 7, "fill_holes": 6000, "specks": 300, "guided": true}
+  ],
+
+  "frame": {"border": [20, 20, 20, 20]},
+
+  "effects": [
+    {"type": "sky_drift", "poly": [[0, 0], [1000, 0], [1000, 600], [0, 600]], "protect": ["subject"], "amp": 5},
+    {"type": "water_ripple", "poly": [[0, 1400], [1000, 1400], [1000, 1700], [0, 1700]]},
+    {"type": "sway", "object": "subject", "anchor": [500, 700], "reach": 300, "side": "right", "amp": [7, 4], "cycles": 6},
+    {"type": "glow", "pos": [500, 400], "color": [255, 200, 120], "sigma": 30, "intensity": 0.3, "anim": "pulse", "period": 3},
+    {"type": "particles", "layer": "back",  "kinds": ["sakura"], "count": 30, "size": [0.4, 0.6]},
+    {"type": "particles", "layer": "front", "kinds": ["sakura"], "count": 25, "size": [0.8, 1.4]},
+    {"type": "bloom"},
+    {"type": "camera", "zoom1": 1.03}
+  ],
+
+  "audio": {"mood": "nature", "layers": ["wind", "drone"], "cues": []}
+}
